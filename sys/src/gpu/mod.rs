@@ -333,4 +333,12 @@ pub mod private {
     nvapi! {
         pub unsafe fn NvAPI_GetDriverModel(hPhysicalGpu: NvPhysicalGpuHandle, pDriverModel: *mut u32) -> NvAPI_Status;
     }
+
+    nvapi! {
+        pub unsafe fn NvAPI_GPU_GetBusId(hPhysicalGpu: NvPhysicalGpuHandle, pBusId: *mut u32) -> NvAPI_Status;
+    }
+
+    nvapi! {
+        pub unsafe fn NvAPI_GPU_GetBusSlotId(hPhysicalGpu: NvPhysicalGpuHandle, pBusSlotId: *mut u32) -> NvAPI_Status;
+    }
 }

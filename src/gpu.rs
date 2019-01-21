@@ -657,6 +657,24 @@ impl PhysicalGpu {
         sys::status_result(unsafe { i2c::NvAPI_I2CWrite(self.0, &mut data) })
             .map(drop)
     }
+
+    pub fn bus_id(&self) -> sys::Result<u32> {
+        trace!("gpu.bus_id()");
+        let mut value = 0;
+        unsafe {
+            sys::status_result(gpu::private::NvAPI_GPU_GetBusId(self.0, &mut value))
+                .map(|_| value)
+        }
+    }
+
+    pub fn bus_slot_id(&self) -> sys::Result<u32> {
+        trace!("gpu.bus_slot_id()");
+        let mut value = 0;
+        unsafe {
+            sys::status_result(gpu::private::NvAPI_GPU_GetBusSlotId(self.0, &mut value))
+                .map(|_| value)
+        }
+    }
 }
 
 #[cfg_attr(feature = "serde_derive", derive(Serialize, Deserialize))]
