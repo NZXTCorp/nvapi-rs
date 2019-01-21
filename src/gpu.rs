@@ -7,7 +7,7 @@ use thermal::CoolerLevel;
 use clock::{ClockDomain, VfpMask};
 use pstate::PState;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct PhysicalGpu(sys::handles::NvPhysicalGpuHandle);
 
 unsafe impl Send for PhysicalGpu { }
